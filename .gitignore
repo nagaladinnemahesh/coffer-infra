@@ -21,3 +21,10 @@ Thumbs.db
 .idea/
 # Local Docker Compose environment
 docker/.env
+
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.tfvars
+terraform/*.tfvars.json
