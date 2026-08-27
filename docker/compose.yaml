@@ -1,0 +1,31 @@
+services:
+
+  cis:
+    build:
+      context: ../../cis
+    env_file:
+      - ../../cis/.env
+    ports:
+      - "8000:8000"
+
+  coffer-backend:
+    build:
+      context: ../../coffer/server
+    env_file:
+      - ../../coffer/server/.env
+    environment:
+      CIS_BASE_URL: http://cis:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - cis
+
+  coffer-frontend:
+    build:
+      context: ../../coffer/client
+      args:
+        VITE_API_BASE_URL: http://localhost:3000
+    ports:
+      - "5173:80"
+    depends_on:
+      - coffer-backend
