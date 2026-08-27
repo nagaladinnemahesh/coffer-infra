@@ -12,7 +12,7 @@ services:
     build:
       context: ../../coffer/server
     env_file:
-      - ../../coffer/server/.env
+      - .env
     environment:
       CIS_BASE_URL: http://cis:8000
     ports:
